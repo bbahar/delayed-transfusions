@@ -9,8 +9,8 @@ example_data <- read_csv("example_data.csv")
 # function
 anomalies <- function(datafile, datetime, timetotransfuse, interval) {
   
-  # when var3 is week, specify the reference day. 7 represents Sunday and 1 (default) represents Monday.
-  # when var3 is day
+  # when 'interval' is week, specify the reference day with week_start. 7 represents Sunday and 1 (default) represents Monday.
+  # when 'interval' is day, no need to remove week_start.
   
   tresults <- datafile %>% 
     mutate(Date = floor_date({{datetime}}, unit = {{interval}}, week_start = 1)) %>%
